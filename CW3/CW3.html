@@ -38,11 +38,11 @@ Input <input type=text id=inp onKeyUp="checkRE()">
 let re='A?(BA)*B?';
 
 
-const ptrn = ["[a-z]", "[0-9]{4}", "d[iuü][km]", "x[a-z]",re,"0?(10)*1?"];
+const ptrn = ["[a-z]", "[0-9]{4}", "d[iuü][km]", "x[a-z]",re,"70 ?77 ?(95 )*96 97?"];
 
 const word = 
     ["Bir iki üç dört beş altı ", "Bugün 23/6/2018 saat 14",
-     "Geldim gördüm buldum...", "Excellent expression tax ","adadABABABadsa","55501015555"];
+     "Geldim gördüm buldum...", "Excellent expression tax ","adadABABABadsa","20.yüzyılda benim için önemli yıllar:70 77 95 95 96 97 olarak sıralanır "];
 function setValues() {
     pat.value = ptrn[menu.selectedIndex];
     inp.value = word[menu.selectedIndex];
