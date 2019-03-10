@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HomeWork 1 </title>
+</head>
+
+<body>
+
+<h2 id=title></h2>
+<h1>Automata Theory</h1>
+<p>HomeWork 1</p>
+Pattern <input type=text id=pat onKeyUp="checkRE()">&emsp;
+<select id=menu onChange="setValues()"> <option> String <option> Array
+</select> 
+
+</br>
+</br>
+<input type="text" id="inp" onkeyup="checkRE()">
+
+<p id=out1></p><br>
+<style>
+
+  #pat { width: 90px; }
+input[type="text"] {
+    width: 75%;
+	height: 20px;
+}
+.font1 { color: red; }
+.font2{ color: blue; }
+</style>
+
+<script>
+"use strict";
+let stringPatern = /("([^"]|"")*")/g;    //String için
+let arrayPatern = /\[.*?\]/g 		     //Array için
+pat.value = stringPatern			     //2 t ile yazıldığını biliyorum kodu yanlış okumamak için pöyle yazdım
+inp.value = 'let longString = "This is a very long string which needs "+"to wrap across multiple lines because "+"otherwise my code is unreadable.";'
+let paterns = [stringPatern, arrayPatern];
+let words = []
+let a = 'let longString = "This is a very long string which needs "+"to wrap across multiple lines because "+"otherwise my code is unreadable.";'
+let b = " var vegetables = ['Cabbage', 'Turnip', 'Radish', 'Carrot']; "
+words.push(a)
+words.push(b)
+checkRE(paterns[menu.selectedIndex],inp.value)
+function setValues() {
+    pat.value = paterns[menu.selectedIndex];
+    inp.value = words[menu.selectedIndex];
+    checkRE(paterns[menu.selectedIndex], inp.value );
+}
+function checkRE(a = paterns[menu.selectedIndex]) {    
+   let str1 = "<span class=font1>$&</span>";
+   let str2 = "<span class=font2>$&</span>";
+   
+	
+	if (pat.value && inp.value) {
+		let exp = pat.value
+        
+	
+		if(menu.selectedIndex == 0 ){
+        out1.innerHTML = inp.value.replace(a, str2);
+		}
+		if(menu.selectedIndex == 1){
+		out1.innerHTML = inp.value.replace(a, str1);
+		
+		}
+        
+    }
+	else{
+		
+	out1.innerHTML = inp.value;
+	
+	}
+	
+}
+</script>
+Ref: <a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp" target="ExternalDocument">RegExp</a></p>
+</body>
+</html>
