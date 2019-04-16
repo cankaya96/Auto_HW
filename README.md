@@ -8,6 +8,9 @@ CLASS WORKS
 - [CW3 - Regular Expressions](https://cankaya96.github.io/Auto_HW/CW3/CW3.html) <br>
 - [CW4](https://cankaya96.github.io/Auto_HW/CW4/CW4.html)<br>
 - [CW5 - Expression Parser](https://cankaya96.github.io/Auto_HW/CW5/Expression.html)<br>
+- [CW6 - PDA](https://cankaya96.github.io/Auto_HW/CW6/PDA1.html)<br>
+- [CW7 - MicroJ3](https://cankaya96.github.io/Auto_HW/CW7/microJ3.html)<br>
 
 HOMEWORKS <br>
 - [HW1 - Pattern](https://cankaya96.github.io/Auto_HW/HW1/HW1.html) <br>
+- [HW2 - Experssion](https://cankaya96.github.io/Auto_HW/HW2/Expression.html)<br>
