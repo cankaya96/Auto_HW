@@ -187,7 +187,6 @@ function assignment() {
 }
 
 function withValue() {
-	debugger;
     let v = identifier();
     match(ASSIGN);
     let e = factor();
