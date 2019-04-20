@@ -14,3 +14,4 @@ CLASS WORKS
 HOMEWORKS <br>
 - [HW1 - Pattern](https://cankaya96.github.io/Auto_HW/HW1/HW1.html) <br>
 - [HW2 - Experssion](https://cankaya96.github.io/Auto_HW/HW2/Expression.html)<br>
+- [HW3 - microJ1](https://cankaya96.github.io/Auto_HW/HW3/microJ1.html)<br>
