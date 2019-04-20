@@ -66,7 +66,7 @@ class Assignment {
 
 class WithValue {
    constructor(v, e) { this.left = v; this.right = e; }
-   run() { VM.setValue(this.left, this.right); }
+   run() { VM.setValue(this.left, this.right);}
    toString() { return this.left+" = "+this.right; }
 }
 
@@ -187,7 +187,11 @@ function assignment() {
 }
 
 function withValue() {
+	
     let v = identifier();
+	if(tok.kind!=ASSIGN){
+		return v;
+	}
     match(ASSIGN);
     let e = factor();
 	
