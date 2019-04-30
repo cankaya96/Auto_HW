@@ -1,0 +1,2 @@
+https://www.researchgate.net/profile/Rajesh_Parekh2/publication/2265888/figure/fig1/AS:669063848144913@1536528660872/shows-the-state-transition-diagram-for-a-sample-DFA-A-non-deterministic-finite-automaton.png
+https://www.tutorialspoint.com/automata_theory/images/ndfa.jpg
