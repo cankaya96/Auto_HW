@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width">
     <title> Conversion </title>
 
-<script>
 
-</script>
+
 </head>
 
 <body>
@@ -22,19 +21,170 @@
       3. Lambda (veya epsilon) kelimesinin durumlar arası geçişte yer almaması
     </p>
   </div>
+  <div >
+    <img src="http://bilgisayarkavramlari.sadievrenseker.com/wp-content/uploads/2008/08/fsm.jpg" border="0">
+	</div>
+  <h3 id=title>NFA</h3>
+ <div >
+    <p>
+      DFA'nın tersine her durumdan gidişin karışık olduğu ve her durum için bir sonraki kelimede nereye gidileceğinin belirli olmadığı otomatlardır. <br>
+      Basitçe DFA kurallarına uymayan bütün otomatlar NFA olarak adlandırılabilir.<br>
+      
+    </p>
+  </div>
 <div >
     <img src="https://www.tutorialspoint.com/automata_theory/images/ndfa.jpg" border="0">
 	</div>
-<pre id=out></pre>
+	<div >
+    <p>
+      Yukarıda bulunan görselde birden çok seçenek mevcuttur bir komut için. Bu nedenle bu belirsizlikleri ortadan kaldırmak için bir algoritma gerekli<br>	       
+    </p>
+  </div>
+  
+  <h3 id=title>ALGORİTMA</h3>
+ <div >
+    <p>
+		<b>Input -</b> 	NFA<br>
+		<b>Output -</b> DFA<br>
+		<b>Adım 1 -</b> Verilen NFA verilerinden bir durum tablosu oluşturun.<br>
+		<b>Adım 2 -</b> Alfabede bulunan ihtimaller dahilindeki inputların altında boş bir durum tablosu oluşturun DFA için.<br>
+		<b>Adım 3 -</b> Tıpkı NFA'da olduğu gibi DFA için başlangıç durumunu q0 olarak ya da bir ok işareti(->) ile işaretleyin.<br>
+		<b>Adım 4 -</b> Tüm olası durumların kombinasyonunu {Q0, Q1,... , Qn} yazınız.<br>
+		<b>Adım 5 -</b> Giriş alfabesi sütunlarının altında yeni bir DFA durumu oluşturduğumuzda, 4.adımı tekrar uygulamamız gerekir, aksi takdirde 6.adıma geçin.<br>
+		<b>Adım 6 -</b> NFA'nın son durumlarından herhangi birini içeren kümeler, eşdeğer DFA'nın son durumlarıdır.<br>
+	</p>
+  </div> 
+  
+  
+  <h3 id=title>ÖRNEK</h3>
+  <div >
+    <img src="https://www.tutorialspoint.com/automata_theory/images/ndfa.jpg" border="0">
+	</div>
+	
+<style>
+    table { 
+        border-collapse: collapse; 
+        margin: 0 50px; 
+    }
+    th { 
+        color: blue; 
+        padding: 5px 12px; 
+    }
+    td { 
+        border: 1px solid blue; 
+        padding: 5px 12px; 
+        text-align: center; 
+    }
+</style>
+<table style="text-align:center;" >
+<tr>
+<th style="text-align:center;">q</th>
+<th style="text-align:center;">δ(q,0)</th>
+<th style="text-align:center;">δ(q,1)</th>
+</tr>
+<tr>
+<td>a</td>
+<td>{a,b,c,d,e}</td>
+<td>{d,e}</td>
+</tr>
+<tr>
+<td>b</td>
+<td>{c}</td>
+<td>{e}</td>
+</tr>
+<tr>
+<td>c</td>
+<td>&empty;</td>
+<td>{b}</td>
+</tr>
+<tr>
+<td>d</td>
+<td>{e}</td>
+<td>&empty;</td>
+</tr>
+<tr>
+<td>e</td>
+<td>&empty;</td>
+<td>&empty;</td>
+</tr>
+</table>
 
+<div >
+    <p>
+		Yukarıda bulunan algoritmadan yola çıkarak NFA tablosunu DFA ya çeviririz 
+	</p>
+  </div>
+  
+  <table style="text-align:center;" class="table table-bordered">
+<tr>
+<th style="text-align:center;">q</th>
+<th style="text-align:center;">&delta;(q,0)</th>
+<th style="text-align:center;">&delta;(q,1)</th>
+</tr>
+<tr>
+<td>[a]</td>
+<td>[a,b,c,d,e]</td>
+<td>[d,e]</td>
+</tr>
+<tr>
+<td>[a,b,c,d,e]</td>
+<td>[a,b,c,d,e]</td>
+<td>[b,d,e]</td>
+</tr>
+<tr>
+<td>[d,e]</td>
+<td>[e]</td>
+<td>&empty;</td>
+</tr>
+<tr>
+<td>[b,d,e]</td>
+<td>[c,e]</td>
+<td>[e]</td>
+</tr>
+<tr>
+<td>[e]</td>
+<td>&empty;</td>
+<td>&empty;</td>
+</tr>
+<tr>
+<td>[c, e]</td>
+<td>&empty;</td>
+<td>[b]</td>
+</tr>
+<tr>
+<td>[b]</td>
+<td>[c]</td>
+<td>[e]</td>
+</tr>
+<tr>
+<td>[c]</td>
+<td>&empty;</td>
+<td>[b]</td>
+</tr>
+</table>
+
+<pre id=out></pre>
+<div >
+    <p>
+		Tablonun buhale gelmesiyle diyagramımız bu hale gelir:
+	</p>
+  </div>
+  <div >
+    <img src="https://www.tutorialspoint.com/automata_theory/images/dfa_state_diagram.jpg" border="0">
+	</div>
 <hr />
 
 
 
 <td>
 		Ref:
-      <a href="http://bilgisayarkavramlari.sadievrenseker.com/2008/11/11/belirli-sonlu-otomat-deterministic-finite-automat/" target="ExternalDocument">DFA</a>
-    </td>
+      <a href="http://bilgisayarkavramlari.sadievrenseker.com/2008/11/11/belirli-sonlu-otomat-deterministic-finite-automat/" target="ExternalDocument">DFA</a><br>
+		Ref:
+      <a href="http://bilgisayarkavramlari.sadievrenseker.com/2008/11/11/belirsiz-sonlu-otomat-nondeterministic-finite-automat-nfa/" target="ExternalDocument">NFA</a><br>
+		Ref:
+	  <a href="https://www.tutorialspoint.com/automata_theory/ndfa_to_dfa_conversion.htm" target="ExternalDocument">Dönüşüm Kuralları</a><br>
+    
+   </td>
 
 <pre id=sample></pre>
 

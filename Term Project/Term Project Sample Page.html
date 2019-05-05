@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>FROM NFA to DFA </title>
+
+<script>
+"use strict";
+function deltaDFA(q, c) { // 
+    if (q=='a' && c=='0') return 'abcd'
+	if (q=='a' && c=='1') return 'd'
+    if (q=='abcd' && c=='0') return 'abcd'
+	if (q=='abcd' && c=='1') return 'bd'
+    if (q=='d' && c=='0') return 'e' 
+	if (q=='bd' && c=='0') return 'c'
+	if (q=='bd' && c=='1') return 'e'
+	if (q=='b' && c=='0') return 'c'
+	if (q=='b' && c=='1') return 'e'
+	if (q=='c' && c=='1') return 'b'
+    return '';  //default -- no transition
+}
+function acceptDFA(w, F='e', q='a') {
+    //w: input String
+    //F: final state(s)
+    //q: current state
+    let i = 0, txt = q
+    while (i < w.length) {
+        q = deltaDFA(q, w[i])
+        if (q == '') break
+        i++; txt += " -> "+q
+    }
+    input.selectionStart = i
+    input.selectionEnd = i+1
+    let a = (q!='' && F.includes(q))
+    return txt+'  '+(a? "Accept" : "Reject")
+}
+function testDFA() {
+    let w = input.value, s = "  "
+    for (let c of w) s += c+"    "
+    s += '\n'+acceptDFA(w, "e")
+    console.log(s); out.innerHTML = s
+}
+</script>
+<style>
+    table { 
+        border-collapse: collapse; 
+        margin: 0 50px; 
+    }
+    th { 
+        color: blue; 
+        padding: 5px 12px; 
+    }
+    td { 
+        border: 1px solid blue; 
+        padding: 5px 12px; 
+        text-align: center; 
+    }
+</style>
+
+
+
+</head>
+
+<body>
+
+<h2 id=title></h2>
+w = <input id=input type=text value=01001010
+  onChange="testDFA()"> &emsp;
+  
+
+  
+  <h2> DFA </h2>
+  
+   <table style="text-align:center;" class="table table-bordered">
+<tr>
+<th style="text-align:center;">q</th>
+<th style="text-align:center;">&delta;(q,0)</th>
+<th style="text-align:center;">&delta;(q,1)</th>
+</tr>
+<tr>
+<td>->[a]</td>
+<td>[a,b,c,d]</td>
+<td>[d]</td>
+</tr>
+<tr>
+<td>[a,b,c,d]</td>
+<td>[a,b,c,d]</td>
+<td>[b,d]</td>
+</tr>
+<tr>
+<td>[d]</td>
+<td>[e]</td>
+<td>&empty;</td>
+</tr>
+<tr>
+<td>[b,d]</td>
+<td>[c]</td>
+<td>[e]</td>
+</tr>
+<tr>
+<td>[c]</td>
+<td>&empty;</td>
+<td>[b]</td>
+</tr>
+<tr>
+<td>[b]</td>
+<td>[c]</td>
+<td>[e]</td>
+</tr>
+<tr>
+<td>*[e]</td>
+<td>&empty;</td>
+<td>&empty;</td>
+</tr>
+<tr>
+
+</table>
+
+
+
+<pre id=out></pre>
+
+<hr />
+<pre id=sample></pre>
+
+<script>
+    title.innerText = document.title
+   //sample.innerText = deltaDFA+'\n'+acceptDFA
+    testDFA()
+	
+	/* 
+	Alfabe elemanları karakter olarak tutulur
+	boş String için: let s=""
+	uzunluk s.length ile bakılır
+	concetenation için ise "+" işareti kulanılır Mesela: yeni=s+s1
+	*/
+</script>
+
+
+
+
+
+
+
+</body>
+</html>
