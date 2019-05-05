@@ -42,6 +42,9 @@ function testDFA() {
     console.log(s); out.innerHTML = s
 }
 </script>
+
+
+
 <style>
     table { 
         border-collapse: collapse; 
@@ -67,8 +70,42 @@ function testDFA() {
 <h2 id=title></h2>
 w = <input id=input type=text value=001011
   onChange="testDFA()"> &emsp;
-  
+  <h2> NFA</h2>
+<table style="text-align:center;" >
+<tr>
+<th style="text-align:center;">q</th>
+<th style="text-align:center;">δ(q,0)</th>
+<th style="text-align:center;">δ(q,1)</th>
+</tr>
+<tr>
+<td>->a</td>
+<td>{a,b,c,d,e}</td>
+<td>{d,e}</td>
+</tr>
+<tr>
+<td>b</td>
+<td>{c}</td>
+<td>{e}</td>
+</tr>
+<tr>
+<td>c</td>
+<td>&empty;</td>
+<td>{b}</td>
+</tr>
+<tr>
+<td>d</td>
+<td>{e}</td>
+<td>&empty;</td>
+</tr>
+<tr>
+<td>*e</td>
+<td>&empty;</td>
+<td>&empty;</td>
+</tr>
+</table>
+<pre id=outNFA></pre>
 
+<hr/>
   
   <h2> DFA </h2>
   
@@ -121,10 +158,10 @@ w = <input id=input type=text value=001011
 
 <pre id=out></pre>
 
-<hr />
-<pre id=sample></pre>
+
 
 <script>
+
     title.innerText = document.title
    //sample.innerText = deltaDFA+'\n'+acceptDFA
     testDFA()
@@ -138,7 +175,56 @@ w = <input id=input type=text value=001011
 </script>
 
 
+<script>
+"use strict";
+debugger;
+function union(a, b) { //set operation using strings
+    let s = a
+    for (let x of b) if (!a.includes(x)) s += x
+    return s
+}
+function intersect(a, b) {
+    let s = ''
+    for (let x of b) if (a.includes(x)) s += x
+    return s
+}
+function delta(q, c) { // 
+    if (q=='a' && c=='0') return 'abcde'
+    if (q=='a' && c=='1') return 'de'
+    if (q=='b' && c=='0') return 'c' 
+	if (q=='b' && c=='1') return 'e' 
+	if (q=='c' && c=='1') return 'b' 
+	if (q=='d' && c=='0') return 'e' 
+	
+    return '';  //default -- no transition
+}
+function accept(w, F='e', Q='a') {
+    //w: input String
+    //F: final state(s)
+    //Q: current state(s)
+    let i = 0, txt = Q
+    while (i < w.length) {
+        let c = w[i], T=''
+        for (let q of Q) 
+            T = union(T, delta(q, c))
+        Q = T
+        if (Q == '') break
+        i++; txt += ", "+c+" -> "+Q+'\n'+Q
+    }
+    input.selectionStart = i
+    input.selectionEnd = i+1
+    let a = intersect(Q, F).length > 0
+    return txt+'  '+(a? "Accept" : "Reject")
+}
+function test() {
+    let s1 = accept(input.value, "e");
+    console.log(s1);  outNFA.innerHTML = s1
+}
 
+    
+    test();
+
+</script>
 
 
 
