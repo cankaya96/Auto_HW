@@ -79,8 +79,8 @@ w = <input id=input type=text value=001011
 </tr>
 <tr>
 <td>->a</td>
-<td>{a,b,c,d,e}</td>
-<td>{d,e}</td>
+<td>{a,b,c,d}</td>
+<td>{d}</td>
 </tr>
 <tr>
 <td>b</td>
@@ -189,8 +189,8 @@ function intersect(a, b) {
     return s
 }
 function delta(q, c) { // 
-    if (q=='a' && c=='0') return 'abcde'
-    if (q=='a' && c=='1') return 'de'
+    if (q=='a' && c=='0') return 'abcd'
+    if (q=='a' && c=='1') return 'd'
     if (q=='b' && c=='0') return 'c' 
 	if (q=='b' && c=='1') return 'e' 
 	if (q=='c' && c=='1') return 'b' 
