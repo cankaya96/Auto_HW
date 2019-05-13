@@ -41,24 +41,13 @@
     </p>
   </div>
   
-  <h3 id=title>ALGORİTMA</h3>
+  <h3 id=title>ALGORİTMA/ÖRNEK</h3>
  <div >
     <p>
 		<b>Input -</b> 	NFA<br>
 		<b>Output -</b> DFA<br>
 		<b>Adım 1 -</b> Verilen NFA verilerinden bir durum tablosu oluşturun.<br>
-		<b>Adım 2 -</b> Alfabede bulunan ihtimaller dahilindeki inputların altında boş bir durum tablosu oluşturun DFA için.<br>
-		<b>Adım 3 -</b> Tıpkı NFA'da olduğu gibi DFA için başlangıç durumunu q0 olarak ya da bir ok işareti(->) ile işaretleyin.<br>
-		<b>Adım 4 -</b> Tüm olası durumların kombinasyonunu {Q0, Q1,... , Qn} yazınız.<br>
-		<b>Adım 5 -</b> Giriş alfabesi sütunlarının altında yeni bir DFA durumu oluşturduğumuzda, 4.adımı tekrar uygulamamız gerekir, aksi takdirde 6.adıma geçin.<br>
-		<b>Adım 6 -</b> NFA'nın son durumlarından herhangi birini içeren kümeler, eşdeğer DFA'nın son durumlarıdır.<br>
-	</p>
-  </div> 
-  
-  
-  <h3 id=title>ÖRNEK</h3>
-  <div >
-    <img src="https://www.tutorialspoint.com/automata_theory/images/ndfa.jpg" border="0">
+		<img src="https://www.tutorialspoint.com/automata_theory/images/ndfa.jpg" border="0">
 	</div>
 	
 <style>
@@ -83,7 +72,7 @@
 <th style="text-align:center;">δ(q,1)</th>
 </tr>
 <tr>
-<td>a</td>
+<td>->a</td>
 <td>{a,b,c,d,e}</td>
 <td>{d,e}</td>
 </tr>
@@ -103,51 +92,49 @@
 <td>&empty;</td>
 </tr>
 <tr>
-<td>e</td>
+<td>*e</td>
 <td>&empty;</td>
 <td>&empty;</td>
 </tr>
 </table>
-
-<div >
-    <p>
-		Yukarıda bulunan algoritmadan yola çıkarak NFA tablosunu DFA ya çeviririz 
-	</p>
-  </div>
-  
-  <table style="text-align:center;" class="table table-bordered">
+		<b>Adım 2 -</b> Alfabede bulunan ihtimaller dahilindeki inputların altında boş bir durum tablosu oluşturun DFA için.<br>
+		<b>Adım 3 -</b> Tıpkı NFA'da olduğu gibi DFA için başlangıç durumunu q0 olarak ya da bir ok işareti(->) ile işaretleyin.<br>
+		<b>Adım 4 -</b> Tüm olası durumların kombinasyonunu {Q0, Q1,... , Qn} yazınız.<br>
+		<b>Adım 5 -</b> Giriş alfabesi sütunlarının altında yeni bir DFA durumu oluşturduğumuzda, 4.adımı tekrar uygulamamız gerekir, aksi takdirde 6.adıma geçin.<br>
+		<b>Adım 6 -</b> NFA'nın son durumlarından herhangi birini içeren kümeler, eşdeğer DFA'nın son durumlarıdır.<br>
+		 <table style="text-align:center;" class="table table-bordered">
 <tr>
 <th style="text-align:center;">q</th>
 <th style="text-align:center;">&delta;(q,0)</th>
 <th style="text-align:center;">&delta;(q,1)</th>
 </tr>
 <tr>
-<td>[a]</td>
+<td>->[a]</td>
 <td>[a,b,c,d,e]</td>
 <td>[d,e]</td>
 </tr>
 <tr>
-<td>[a,b,c,d,e]</td>
+<td>*[a,b,c,d,e]</td>
 <td>[a,b,c,d,e]</td>
 <td>[b,d,e]</td>
 </tr>
 <tr>
-<td>[d,e]</td>
+<td>*[d,e]</td>
 <td>[e]</td>
 <td>&empty;</td>
 </tr>
 <tr>
-<td>[b,d,e]</td>
+<td>*[b,d,e]</td>
 <td>[c,e]</td>
 <td>[e]</td>
 </tr>
 <tr>
-<td>[e]</td>
+<td>*[e]</td>
 <td>&empty;</td>
 <td>&empty;</td>
 </tr>
 <tr>
-<td>[c, e]</td>
+<td>*[c, e]</td>
 <td>&empty;</td>
 <td>[b]</td>
 </tr>
@@ -162,9 +149,9 @@
 <td>[b]</td>
 </tr>
 </table>
-
-<pre id=out></pre>
-<div >
+	</p>
+	
+	<div >
     <p>
 		Tablonun bu hale gelmesiyle diyagramımız bu hale gelir:(<a href="https://cankaya96.github.io/Auto_HW/Term%20Project/Term%20Project%20Sample%20Page.html" target="ExternalDocument">Uygulama Linki</a>)<br>
 	</p>
@@ -172,6 +159,9 @@
   <div >
     <img src="https://www.tutorialspoint.com/automata_theory/images/dfa_state_diagram.jpg" border="0">
 	</div>
+  </div> 
+
+
 <hr />
 
 
