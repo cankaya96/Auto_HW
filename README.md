@@ -16,5 +16,5 @@ HOMEWORKS <br>
 - [HW2 - Experssion](https://cankaya96.github.io/Auto_HW/HW2/Expression.html)<br>
 - [HW3 - microJ1](https://cankaya96.github.io/Auto_HW/HW3/microJ1.html)<br>
 
-TERM PROJECT(NOT COMPLETED)<br>
+TERM PROJECT<br>
 - [Conversion](https://cankaya96.github.io/Auto_HW/Term%20Project/Term%20Project.html)<br>
