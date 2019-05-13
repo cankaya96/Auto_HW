@@ -8,16 +8,20 @@
 <script>
 "use strict";
 function deltaDFA(q, c) { // 
-    if (q=='a' && c=='0') return 'abcd'
-	if (q=='a' && c=='1') return 'd'
-    if (q=='abcd' && c=='0') return 'abcd'
-	if (q=='abcd' && c=='1') return 'bd'
-    if (q=='d' && c=='0') return 'e' 
-	if (q=='bd' && c=='0') return 'c'
-	if (q=='bd' && c=='1') return 'e'
-	if (q=='b' && c=='0') return 'c'
-	if (q=='b' && c=='1') return 'e'
-	if (q=='c' && c=='1') return 'b'
+    if (q=='a' && c=='0') return 'bd'
+    if (q=='a' && c=='1') return 'c'
+    if (q=='b' && c=='0') return 'd' 
+	if (q=='b' && c=='1') return 'c' 
+	if (q=='c' && c=='0') return 'e' 
+	if (q=='c' && c=='1') return 'd' 
+	if (q=='d' && c=='1') return 'd' 
+	if (q=='e' && c=='0') return 'e'
+	if (q=='c' && c=='1') return 'c'
+
+	if (q=='bd' && c=='0') return 'd'
+	if (q=='bd' && c=='1') return 'cd'
+	if (q=='cd' && c=='0') return 'e'
+	if (q=='cd' && c=='1') return 'd'
     return '';  //default -- no transition
 }
 function acceptDFA(w, F='e', q='a') {
@@ -68,8 +72,9 @@ function testDFA() {
 <body>
 
 <h2 id=title></h2>
-w = <input id=input type=text value=001011
+w = <input id=input type=text value=0100
   onChange="testDFA()"> &emsp;
+  <input type=button value="Sonucu Göster"  onClick="Donusum()">
   <h2> NFA</h2>
 <table style="text-align:center;" >
 <tr>
@@ -79,28 +84,28 @@ w = <input id=input type=text value=001011
 </tr>
 <tr>
 <td>->a</td>
-<td>{a,b,c,d}</td>
-<td>{d}</td>
+<td>{b,d}</td>
+<td>{a}</td>
 </tr>
 <tr>
 <td>b</td>
+<td>{d}</td>
 <td>{c}</td>
-<td>{e}</td>
 </tr>
 <tr>
 <td>c</td>
-<td>&empty;</td>
-<td>{b}</td>
+<td>{e}</td>
+<td>{d}</td>
 </tr>
 <tr>
 <td>d</td>
-<td>{e}</td>
 <td>&empty;</td>
+<td>{d}</td>
 </tr>
 <tr>
 <td>*e</td>
-<td>&empty;</td>
-<td>&empty;</td>
+<td>{e}</td>
+<td>{c}</td>
 </tr>
 </table>
 <pre id=outNFA></pre>
@@ -117,38 +122,38 @@ w = <input id=input type=text value=001011
 </tr>
 <tr>
 <td>->[a]</td>
-<td>[a,b,c,d]</td>
-<td>[d]</td>
-</tr>
-<tr>
-<td>[a,b,c,d]</td>
-<td>[a,b,c,d]</td>
 <td>[b,d]</td>
-</tr>
-<tr>
-<td>[d]</td>
-<td>[e]</td>
-<td>&empty;</td>
+<td>[a]</td>
 </tr>
 <tr>
 <td>[b,d]</td>
-<td>[c]</td>
+<td>[d]</td>
+<td>[c,d]</td>
+</tr>
+<tr>
+<td>[c,d]</td>
 <td>[e]</td>
+<td>[d]</td>
+</tr>
+<tr>
+<td>[b]</td>
+<td>[d]</td>
+<td>[c]</td>
 </tr>
 <tr>
 <td>[c]</td>
+<td>[e]</td>
+<td>[d]</td>
+</tr>
+<tr>
+<td>[d]</td>
 <td>&empty;</td>
-<td>[b]</td>
-</tr>
-<tr>
-<td>[b]</td>
-<td>[c]</td>
-<td>[e]</td>
+<td>[d]</td>
 </tr>
 <tr>
 <td>*[e]</td>
-<td>&empty;</td>
-<td>&empty;</td>
+<td>[e]</td>
+<td>[c]</td>
 </tr>
 <tr>
 
@@ -189,12 +194,15 @@ function intersect(a, b) {
     return s
 }
 function delta(q, c) { // 
-    if (q=='a' && c=='0') return 'abcd'
-    if (q=='a' && c=='1') return 'd'
-    if (q=='b' && c=='0') return 'c' 
-	if (q=='b' && c=='1') return 'e' 
-	if (q=='c' && c=='1') return 'b' 
-	if (q=='d' && c=='0') return 'e' 
+    if (q=='a' && c=='0') return 'bd'
+    if (q=='a' && c=='1') return 'c'
+    if (q=='b' && c=='0') return 'd' 
+	if (q=='b' && c=='1') return 'c' 
+	if (q=='c' && c=='0') return 'e' 
+	if (q=='c' && c=='1') return 'd' 
+	if (q=='d' && c=='1') return 'd' 
+	if (q=='e' && c=='0') return 'e'
+	if (q=='c' && c=='1') return 'c' 
 	
     return '';  //default -- no transition
 }
@@ -224,12 +232,18 @@ function test() {
     
     test();
 
+
+function Donusum(){
+	testDFA();
+	test();
+}
 </script>
 
 <td>
 		Ref:
-      <a href="https://github.com/maeyler/Auto" target="ExternalDocument">maeyler/Auto</a><br>
-		
+      <a href="https://cankaya96.github.io/Auto_HW/CW1/DFA1.html" target="ExternalDocument">DFA/Auto_HW</a><br>
+		Ref:
+      <a href="https://cankaya96.github.io/Auto_HW/CW2/CW2.html" target="ExternalDocument">NFA/Auto_HW</a><br>
 </td>
 
 </body>
